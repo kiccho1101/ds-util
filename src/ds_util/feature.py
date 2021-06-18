@@ -70,7 +70,7 @@ class BaseFeature(metaclass=ABCMeta):
     def create_feature(self, df: pd.DataFrame, **kwargs) -> pd.DataFrame:
         raise NotImplementedError
 
-    def main(self, df: pd.DataFrame, rerun: bool = False, **kwargs):
+    def main(self, df: pd.DataFrame, rerun: bool = False, with_test: bool = True, **kwargs):
         for required_col in self.required_cols:
             if required_col not in df.columns:
                 raise ValueError(f"{required_col} not in df")
@@ -83,6 +83,7 @@ class BaseFeature(metaclass=ABCMeta):
         else:
             with TimeUtil.timer(f"read_feature: {self.name}"):
                 fe_df = self.read()
-        TestUtil.assert_any(len(fe_df), len(df))
+        if with_test:
+            TestUtil.assert_any(len(fe_df), len(df))
         df = self.merge(df, fe_df)
         return df
