@@ -1,4 +1,4 @@
-__version__ = "0.2.0"
+__version__ = "0.2.1"
 from .eda_util import EdaUtil
 from .feature import BaseFeature
 from .file_util import FileUtil

@@ -38,15 +38,19 @@ class BaseFeature(metaclass=ABCMeta):
         if merge_type not in ALLOWED_MERGE_TYPES:
             raise ValueError("merge_ must be in {}".format(ALLOWED_DATA_TYPES))
 
-    def save(self, fe_df: pd.DataFrame):
+    def get_filepath(self) -> Path:
         filepath = self.path / f"{self.name}.{self.data_type}"
+        return filepath
+
+    def save(self, fe_df: pd.DataFrame):
+        filepath = self.get_filepath()
         if self.data_type == "pickle":
             fe_df.to_pickle(str(filepath))
         else:
             fe_df.to_feather(str(filepath))
 
     def read(self) -> pd.DataFrame:
-        filepath = self.path / f"{self.name}.{self.data_type}"
+        filepath = self.get_filepath()
         if self.data_type == "pickle":
             fe_df = pd.read_pickle(str(filepath))
         else:
@@ -71,7 +75,7 @@ class BaseFeature(metaclass=ABCMeta):
             if required_col not in df.columns:
                 raise ValueError(f"{required_col} not in df")
 
-        filepath = self.path / f"{self.name}.{self.data_type}"
+        filepath = self.get_filepath()
         if rerun or not filepath.exists():
             with TimeUtil.timer(f"create_feature: {self.name}"):
                 fe_df = self.create_feature(df, **kwargs)
