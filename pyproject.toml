@@ -4,6 +4,8 @@ version = "0.2.1"
 description = "Util scripts for data science projects and Kaggle."
 authors = ["kiccho1101 <youodf11khp@gmail.com>"]
 license = "MIT"
+homepage = "https://github.com/kiccho1101"
+repository = "https://github.com/kiccho1101/ds-util"
 
 [tool.poetry.dependencies]
 python = "^3.8"
