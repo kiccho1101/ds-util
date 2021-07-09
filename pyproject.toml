@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "ds-util"
-version = "0.2.2"
+version = "0.3.0"
 description = "Util scripts for data science projects and Kaggle."
 authors = ["kiccho1101 <youodf11khp@gmail.com>"]
 license = "MIT"
@@ -8,7 +8,7 @@ homepage = "https://github.com/kiccho1101"
 repository = "https://github.com/kiccho1101/ds-util"
 
 [tool.poetry.dependencies]
-python = "^3.8"
+python = "^3.7"
 pandas = "^1.2.4"
 numpy = "^1.20.3"
 psutil = "^5.8.0"
