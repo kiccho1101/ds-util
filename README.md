@@ -17,10 +17,13 @@ poetry install
 ## Test
 
 ```bash
+poetry run ptw
+```
+
+```bash
 poetry run pytest -v
 ```
 
 ```bash
 poetry run pytest -v --cov=ds_util
 ```
-
