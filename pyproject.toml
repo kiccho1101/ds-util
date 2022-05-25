@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "ds-util"
-version = "0.8.0"
+version = "0.9.0"
 description = "Util scripts for data science projects and Kaggle."
 authors = ["kiccho1101 <youodf11khp@gmail.com>"]
 license = "MIT"
